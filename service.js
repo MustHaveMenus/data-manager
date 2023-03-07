@@ -65,14 +65,19 @@ export async function getPopMenu(url) {
       items: []
     }
 
-    $section.find(".pm-next-dish-card-inner").each(function() {
+    let $items = $section.find(".pm-next-dish-card-inner");
+    if ($items.length > 0) {
+      $items = $(".pm-dish-card");
+    }
+
+    $items.each(function() {
       const $item = $(this);
       section.items.push({
         name: $item.find("h4").text(),
         description: $item.find("p span:last").text(),
         price: $item.find(".pm-next-dish-price").text()
       })
-    })
+    });
 
     sections.push(section);
   });
