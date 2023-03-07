@@ -13,6 +13,9 @@
     "connect-multiparty": "^2.2.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "pdfjs-dist": "^3.2.146"
+    "jquery": "^3.6.3",
+    "jsdom": "^21.1.0",
+    "pdfjs-dist": "^3.2.146",
+    "puppeteer": "^19.7.2"
   }
 }
