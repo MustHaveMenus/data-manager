@@ -42,9 +42,10 @@ export async function getPopMenu(url) {
     url = `https://${url}`;
   }
   if (url.indexOf("menu#menu") > -1) {
-    const bits = url.split("menu#menu");
+    const bits = url.split("menu#menu=");
     url = `${bits[0]}menus/${bits[1]}`;
   }
+  console.log("=> fetching from URL: " + url);
 
 
   const browser = await puppeteer.launch({
