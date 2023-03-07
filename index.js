@@ -16,16 +16,19 @@ app.use(express.urlencoded());
 app.use(cors(corsOptions));
 
 app.get("/status", (req, res) => {
+  console.log("=> /status");
   res.header('Access-Control-Allow-Origin', "*");
   res.send(true);
 });
 
 app.post("/pdf/analyze", multipartMiddleware, async (req, res) => {
+  console.log("=> /pdf/analyze");
   res.header('Access-Control-Allow-Origin', "*");
   res.send(await deconstruct(req.files.file.path));
 });
 
 app.get("/pop/menu", async (req, res) => {
+  console.log("=> /pop/menu");
   res.header('Access-Control-Allow-Origin', "*");
   res.send(await getPopMenu(req.query.path));
 });
