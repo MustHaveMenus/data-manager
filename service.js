@@ -66,7 +66,7 @@ export async function getPopMenu(url) {
     }
 
     let $items = $section.find(".pm-next-dish-card-inner");
-    if ($items.length > 0) {
+    if ($items.length === 0) {
       $items = $(".pm-dish-card");
     }
 
