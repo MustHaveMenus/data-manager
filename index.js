@@ -6,11 +6,10 @@ import { deconstruct, getPopMenu } from "./service.js";
 const app = express();
 const multipartMiddleware = multipart();
 
-const port = 3000;
+const port = 80;
+const origin = ["http://localhost:8081/", "http://127.0.0.1:8081/", "https://test.mhmfun.com/", "https://www.musthavemenus.com/"];
 
-const corsOptions = {
-  origin: ["http://localhost:8081/", "http://127.0.0.1:8081/", "https://test.mhmfun.com/", "https://www.musthavemenus.com/"]
-}
+const corsOptions = {origin}
 
 app.use(express.json());
 app.use(express.urlencoded());
@@ -32,5 +31,6 @@ app.get("/pop/menu", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`=> PDF Analyzer started on port ${port}`)
+  console.log(`=> PDF Analyzer started on port ${port}`);
+  console.log(`=> allowed origins: ${JSON.stringify(origin)}`);
 });
