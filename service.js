@@ -38,6 +38,7 @@ export async function deconstruct(file) {
 }
 
 export async function getPopMenu(url) {
+  console.log("=> URL BEFORE: " + url);
   if (url.indexOf("https") === -1) {
     url = `https://${url}`;
   }
@@ -45,7 +46,7 @@ export async function getPopMenu(url) {
     const bits = url.split("menu#menu=");
     url = `${bits[0]}menus/${bits[1]}`;
   }
-  console.log("=> fetching from URL: " + url);
+  console.log("=> URL AFTER: " + url);
 
 
   const browser = await puppeteer.launch({
