@@ -38,6 +38,15 @@ export async function deconstruct(file) {
 }
 
 export async function getPopMenu(url) {
+  if (url.indexOf("https") === -1) {
+    url = `https://${url}`;
+  }
+  if (url.indexOf("menu#menu") > -1) {
+    const bits = url.split("menu#menu");
+    url = `${bits[0]}menus/${bits[1]}`;
+  }
+
+
   const browser = await puppeteer.launch({
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
@@ -45,7 +54,7 @@ export async function getPopMenu(url) {
   
   await page.setViewport({ width: 1280, height: 720 }); 
   await page.setExtraHTTPHeaders(BROWSER_HEADERS); 
-  await page.goto(`https://${url}`);
+  await page.goto(url);
   await autoScrollPage(page);
   await page.waitForTimeout(1000)
   
