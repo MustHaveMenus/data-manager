@@ -58,7 +58,7 @@ export async function getPopMenu(url) {
   await page.setExtraHTTPHeaders(BROWSER_HEADERS); 
   await page.goto(url);
   await autoScrollPage(page);
-  await page.waitForTimeout(1000)
+  await page.waitForTimeout(1500);
   
   const content = await page.content();
   
@@ -110,7 +110,7 @@ async function autoScrollPage(page){
                   clearInterval(timer);
                   resolve();
               }
-          }, 100);
+          }, 200);
       });
   });
 }
